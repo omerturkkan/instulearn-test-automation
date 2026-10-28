@@ -1,0 +1,19 @@
+# Build output
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+
+# Reports and logs
+allure-results/
+allure-report/
+logs/
+
+# Secrets and local config
+config.properties
+.env
