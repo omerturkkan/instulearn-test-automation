@@ -15,5 +15,4 @@ allure-report/
 logs/
 
 # Secrets and local config
-config.properties
 .env
