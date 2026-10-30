@@ -7,7 +7,7 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 | Area | Tool | Status |
 |---|---|---|
 | Language / Build | Java 21, Maven | In use |
-| UI automation | Selenium 4 | Planned |
+| UI automation | Selenium 4 | In use |
 | BDD | Cucumber 7, JUnit 5 Platform | Planned |
 | API testing | REST Assured | Planned |
 | Assertions | AssertJ | Planned |
@@ -26,7 +26,7 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 Work in progress. Planned milestones:
 
 - [x] Maven project setup
-- [ ] Configuration handling and WebDriver management
+- [x] Configuration handling and WebDriver management
 - [ ] First page object and login scenario
 - [ ] Hooks: screenshots on failure, logging, Allure attachments
 - [ ] User stories implemented as test scenarios
