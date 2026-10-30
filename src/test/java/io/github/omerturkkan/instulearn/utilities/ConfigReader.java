@@ -1,14 +1,17 @@
 package io.github.omerturkkan.instulearn.utilities;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.util.Properties;
 
-public class ConfigReader {
+public final class ConfigReader {
 
     private static final String CONFIG_FILE = "config.properties";
     private static final Properties PROPERTIES = new Properties();
+    private static final Dotenv DOTENV = Dotenv.configure().ignoreIfMissing().load();
 
     static {
         try (InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
@@ -21,10 +24,13 @@ public class ConfigReader {
         }
     }
 
+    private ConfigReader() {
+    }
+
     public static String get(String key) {
         String value = System.getProperty(key);
         if (value == null) {
-            value = System.getenv(toEnvName(key));
+            value = DOTENV.get(toEnvName(key));
         }
         if (value == null) {
             value = PROPERTIES.getProperty(key);
