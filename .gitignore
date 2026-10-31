@@ -12,6 +12,7 @@ target/
 # Reports and logs
 allure-results/
 allure-report/
+.allure/
 logs/
 
 # Secrets and local config
