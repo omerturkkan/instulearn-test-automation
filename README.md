@@ -8,9 +8,9 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 |---|---|---|
 | Language / Build | Java 21, Maven | In use |
 | UI automation | Selenium 4 | In use |
-| BDD | Cucumber 7, JUnit 5 Platform | Planned |
+| BDD | Cucumber 7, JUnit 5 Platform | In use |
 | API testing | REST Assured | Planned |
-| Assertions | AssertJ | Planned |
+| Assertions | AssertJ | In use |
 | Reporting | Allure | Planned |
 | Logging | SLF4J, Log4j2 | Planned |
 | CI/CD | Jenkins | Planned |
@@ -20,6 +20,18 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 - JDK 21
 - Maven 3.9+
 - Git
+- Google Chrome
+
+## How to Run
+
+1. Copy `.env.example` to `.env` and fill in the test account credentials.
+2. Run the tests:
+
+   ```
+   mvn test
+   ```
+
+To run without opening a browser window: `mvn test -Dheadless=true`
 
 ## Status
 
@@ -27,7 +39,7 @@ Work in progress. Planned milestones:
 
 - [x] Maven project setup
 - [x] Configuration handling and WebDriver management
-- [ ] First page object and login scenario
+- [x] First page object and login scenario
 - [ ] Hooks: screenshots on failure, logging, Allure attachments
 - [ ] User stories implemented as test scenarios
 - [ ] API tests with REST Assured

@@ -6,6 +6,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public final class DriverManager {
 
+    private static final String HEADLESS_ARGUMENT = "--headless=new";
+    private static final String WINDOW_SIZE_ARGUMENT = "--window-size=1920,1080";
+
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
     private DriverManager() {
@@ -39,10 +42,10 @@ public final class DriverManager {
         boolean headless = Boolean.parseBoolean(ConfigReader.get("headless"));
 
         if (headless) {
-            options.addArguments("--headless=new");
+            options.addArguments(HEADLESS_ARGUMENT);
         }
 
-        options.addArguments("--window-size=1920,1080");
+        options.addArguments(WINDOW_SIZE_ARGUMENT);
 
         return new ChromeDriver(options);
     }
