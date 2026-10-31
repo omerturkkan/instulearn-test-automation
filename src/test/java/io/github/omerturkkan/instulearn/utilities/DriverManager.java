@@ -21,8 +21,12 @@ public final class DriverManager {
         return DRIVER.get();
     }
 
+    public static boolean hasDriver() {
+        return DRIVER.get() != null;
+    }
+
     public static void quitDriver() {
-        if (DRIVER.get() != null) {
+        if (hasDriver()) {
             DRIVER.get().quit();
             DRIVER.remove();
         }
