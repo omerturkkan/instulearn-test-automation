@@ -11,7 +11,7 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 | BDD | Cucumber 7, JUnit 5 Platform | In use |
 | API testing | REST Assured | Planned |
 | Assertions | AssertJ | In use |
-| Reporting | Allure | Planned |
+| Reporting | Allure | In use |
 | Logging | SLF4J, Log4j2 | Planned |
 | CI/CD | Jenkins | Planned |
 
@@ -32,6 +32,12 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
    ```
 
 To run without opening a browser window: `mvn test -Dheadless=true`
+
+To view the Allure report after a run:
+
+```
+mvn io.qameta.allure:allure-maven:serve
+```
 
 ## Status
 
