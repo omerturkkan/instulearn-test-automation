@@ -17,11 +17,11 @@ public class LoginSteps {
         loginPage.open();
     }
 
-    @When("the user logs in with valid student credentials")
-    public void theUserLogsInWithValidStudentCredentials() {
+    @When("the user logs in with valid {string} credentials")
+    public void theUserLogsInWithValidCredentials(String role) {
         loginPage.login(
-                ConfigReader.get("student.email"),
-                ConfigReader.get("student.password")
+                ConfigReader.get(role + ".email"),
+                ConfigReader.get(role + ".password")
         );
     }
 
