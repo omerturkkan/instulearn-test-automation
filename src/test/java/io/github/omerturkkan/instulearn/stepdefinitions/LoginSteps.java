@@ -1,5 +1,6 @@
 package io.github.omerturkkan.instulearn.stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,11 +18,11 @@ public class LoginSteps {
         loginPage.open();
     }
 
-    @When("the user logs in with valid student credentials")
-    public void theUserLogsInWithValidStudentCredentials() {
+    @When("the user logs in with valid {string} credentials")
+    public void theUserLogsInWithValidCredentials(String role) {
         loginPage.login(
-                ConfigReader.get("student.email"),
-                ConfigReader.get("student.password")
+                ConfigReader.get(role + ".email"),
+                ConfigReader.get(role + ".password")
         );
     }
 
@@ -29,6 +30,30 @@ public class LoginSteps {
     public void theUserShouldBeLoggedIn() {
         assertThat(loginPage.isLoggedIn())
                 .as("User should be redirected to the panel after login")
+                .isTrue();
+    }
+
+    @When("the user logs in as {string} with password {string}")
+    public void theUserLogsInAsWithPassword(String role, String password) {
+        loginPage.login(
+                ConfigReader.get(role + ".email"),
+                password
+        );
+    }
+
+    @Then("an error message should be displayed")
+    public void anErrorMessageShouldBeDisplayed() {
+        String expectedMessage = "The password or username is incorrect.";
+
+        assertThat(loginPage.getErrorMessage())
+                .as("Error message should be shown for an invalid password")
+                .isEqualTo(expectedMessage);
+    }
+
+    @And("the user should stay on the login page")
+    public void theUserShouldStayOnTheLoginPage() {
+        assertThat(loginPage.isOnLoginPage())
+                .as("User should stay on the login page after an invalid login")
                 .isTrue();
     }
 }
