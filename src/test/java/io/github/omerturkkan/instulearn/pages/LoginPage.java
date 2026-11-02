@@ -14,6 +14,7 @@ public class LoginPage {
     private static final By EMAIL_INPUT = By.id("email");
     private static final By PASSWORD_INPUT = By.id("password");
     private static final By LOGIN_BUTTON = By.cssSelector("form[action='/login'] button[type='submit']");
+    private static final By ERROR_MESSAGE = By.className("invalid-feedback");
 
     private static final String LOGIN_PATH = "/login";
     private static final String PANEL_PATH = "/panel";
@@ -35,5 +36,14 @@ public class LoginPage {
         boolean loggedIn = WaitHelper.waitForUrlContains(PANEL_PATH);
         LOG.info("Logged in: {}", loggedIn);
         return loggedIn;
+    }
+
+    public boolean isOnLoginPage() {
+        String currentUrl = DriverManager.getDriver().getCurrentUrl();
+        return currentUrl != null && currentUrl.contains(LOGIN_PATH);
+    }
+
+    public String getErrorMessage() {
+        return WaitHelper.waitForVisibility(ERROR_MESSAGE).getText();
     }
 }

@@ -12,3 +12,10 @@ Feature: User login
     Given the user is on the login page
     When the user logs in with valid "teacher" credentials
     Then the user should be logged in
+
+  @ui
+  Scenario: Student cannot log in with an invalid password
+    Given the user is on the login page
+    When the user logs in as "student" with password "WrongPassword123"
+    Then an error message should be displayed
+    And the user should stay on the login page
