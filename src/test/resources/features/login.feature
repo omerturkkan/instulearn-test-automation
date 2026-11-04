@@ -17,5 +17,5 @@ Feature: User login
   Scenario: Student cannot log in with an invalid password
     Given the user is on the login page
     When the user logs in as "student" with password "WrongPassword123"
-    Then an error message should be displayed
+    Then the error message "The password or username is incorrect." should be displayed
     And the user should stay on the login page
