@@ -41,10 +41,8 @@ public class LoginSteps {
         );
     }
 
-    @Then("an error message should be displayed")
-    public void anErrorMessageShouldBeDisplayed() {
-        String expectedMessage = "The password or username is incorrect.";
-
+    @Then("the error message {string} should be displayed")
+    public void theErrorMessageShouldBeDisplayed(String expectedMessage) {
         assertThat(loginPage.getErrorMessage())
                 .as("Error message should be shown for an invalid password")
                 .isEqualTo(expectedMessage);
