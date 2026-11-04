@@ -33,3 +33,9 @@ Feature: User login
     Given the user is on the login page
     When the user clicks the signup link
     Then the user should be on the register page
+
+  @ui
+  Scenario: User navigates from the login page to the forgot password page
+    Given the user is on the login page
+    When the user clicks the forgot password link
+    Then the forgot password page should open in a new tab

@@ -18,10 +18,12 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_IMAGE = By.cssSelector("img[alt='Login']");
     private static final By LOGIN_HEADING = By.cssSelector(".login-card h1");
     private static final By SIGNUP_LINK = By.cssSelector(".login-card a[href='/register']");
+    private static final By FORGOT_PASSWORD_LINK = By.cssSelector(".login-card a[href='/forget-password']");
 
     private static final String LOGIN_PATH = "/login";
     private static final String PANEL_PATH = "/panel";
     private static final String REGISTER_PATH = "/register";
+    private static final String FORGOT_PASSWORD_PATH = "/forget-password";
 
     public void open() {
         String loginUrl = ConfigReader.get("base.url") + LOGIN_PATH;
@@ -77,5 +79,14 @@ public class LoginPage extends BasePage {
 
     public boolean isOnRegisterPage() {
         return WaitHelper.waitForUrlContains(REGISTER_PATH);
+    }
+
+    public void clickForgotPasswordLink() {
+        click(FORGOT_PASSWORD_LINK);
+    }
+
+    public boolean isForgotPasswordPageOpenedInNewTab() {
+        switchToNewTab();
+        return WaitHelper.waitForUrlContains(FORGOT_PASSWORD_PATH);
     }
 }

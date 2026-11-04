@@ -98,4 +98,16 @@ public class LoginSteps {
                 .as("The user should be on the register page")
                 .isTrue();
     }
+
+    @When("the user clicks the forgot password link")
+    public void theUserClicksTheForgotPasswordLink() {
+        loginPage.clickForgotPasswordLink();
+    }
+
+    @Then("the forgot password page should open in a new tab")
+    public void theForgotPasswordPageShouldOpenInANewTab() {
+        assertThat(loginPage.isForgotPasswordPageOpenedInNewTab())
+                .as("The forgot password page should open in a new tab")
+                .isTrue();
+    }
 }
