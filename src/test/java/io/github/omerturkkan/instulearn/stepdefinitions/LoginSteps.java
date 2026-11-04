@@ -54,4 +54,36 @@ public class LoginSteps {
                 .as("User should stay on the login page after an invalid login")
                 .isTrue();
     }
+
+    @Then("the login image should be displayed")
+    public void theLoginImageShouldBeDisplayed() {
+        assertThat(loginPage.isLoginImageDisplayed())
+                .as("Login image should be displayed on the login page")
+                .isTrue();
+    }
+
+    @And("the heading {string} should be displayed")
+    public void theHeadingShouldBeDisplayed(String expectedHeading) {
+        assertThat(loginPage.getHeadingText())
+                .as("Login page heading should match the expected text")
+                .isEqualTo(expectedHeading);
+    }
+
+    @And("the email and password fields should be enabled")
+    public void theEmailAndPasswordFieldsShouldBeEnabled() {
+        assertThat(loginPage.isEmailFieldEnabled())
+                .as("The email field should be enabled")
+                .isTrue();
+
+        assertThat(loginPage.isPasswordFieldEnabled())
+                .as("The password field should be enabled")
+                .isTrue();
+    }
+
+    @And("the login button should be enabled")
+    public void theLoginButtonShouldBeEnabled() {
+        assertThat(loginPage.isLoginButtonEnabled())
+                .as("The login button should be enabled")
+                .isTrue();
+    }
 }

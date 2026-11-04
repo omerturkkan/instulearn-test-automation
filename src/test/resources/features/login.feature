@@ -19,3 +19,11 @@ Feature: User login
     When the user logs in as "student" with password "WrongPassword123"
     Then the error message "The password or username is incorrect." should be displayed
     And the user should stay on the login page
+
+  @ui
+  Scenario: Login page displays the login form elements
+    Given the user is on the login page
+    Then the login image should be displayed
+    And the heading "Log in to your account" should be displayed
+    And the email and password fields should be enabled
+    And the login button should be enabled

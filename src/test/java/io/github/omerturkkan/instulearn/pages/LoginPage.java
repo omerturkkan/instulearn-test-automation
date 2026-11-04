@@ -15,6 +15,8 @@ public class LoginPage {
     private static final By PASSWORD_INPUT = By.id("password");
     private static final By LOGIN_BUTTON = By.cssSelector("form[action='/login'] button[type='submit']");
     private static final By ERROR_MESSAGE = By.className("invalid-feedback");
+    private static final By LOGIN_IMAGE = By.cssSelector("img[alt='Login']");
+    private static final By LOGIN_HEADING = By.cssSelector(".login-card h1");
 
     private static final String LOGIN_PATH = "/login";
     private static final String PANEL_PATH = "/panel";
@@ -45,5 +47,25 @@ public class LoginPage {
 
     public String getErrorMessage() {
         return WaitHelper.waitForVisibility(ERROR_MESSAGE).getText();
+    }
+
+    public boolean isLoginImageDisplayed() {
+        return WaitHelper.waitForVisibility(LOGIN_IMAGE).isDisplayed();
+    }
+
+    public String getHeadingText() {
+        return WaitHelper.waitForVisibility(LOGIN_HEADING).getText();
+    }
+
+    public boolean isEmailFieldEnabled() {
+        return WaitHelper.waitForVisibility(EMAIL_INPUT).isEnabled();
+    }
+
+    public boolean isPasswordFieldEnabled() {
+        return WaitHelper.waitForVisibility(PASSWORD_INPUT).isEnabled();
+    }
+
+    public boolean isLoginButtonEnabled() {
+        return WaitHelper.waitForVisibility(LOGIN_BUTTON).isEnabled();
     }
 }
