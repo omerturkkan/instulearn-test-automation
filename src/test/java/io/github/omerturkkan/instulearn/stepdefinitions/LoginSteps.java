@@ -86,4 +86,16 @@ public class LoginSteps {
                 .as("The login button should be enabled")
                 .isTrue();
     }
+
+    @When("the user clicks the signup link")
+    public void theUserClicksTheSignupLink() {
+        loginPage.clickSignUpLink();
+    }
+
+    @Then("the user should be on the register page")
+    public void theUserShouldBeOnTheRegisterPage() {
+        assertThat(loginPage.isOnRegisterPage())
+                .as("The user should be on the register page")
+                .isTrue();
+    }
 }

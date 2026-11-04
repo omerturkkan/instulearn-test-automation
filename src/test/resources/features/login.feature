@@ -27,3 +27,9 @@ Feature: User login
     And the heading "Log in to your account" should be displayed
     And the email and password fields should be enabled
     And the login button should be enabled
+
+  @ui
+  Scenario: User navigates from the login page to the register page
+    Given the user is on the login page
+    When the user clicks the signup link
+    Then the user should be on the register page

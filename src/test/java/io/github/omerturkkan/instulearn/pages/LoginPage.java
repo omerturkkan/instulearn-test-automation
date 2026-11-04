@@ -17,9 +17,11 @@ public class LoginPage {
     private static final By ERROR_MESSAGE = By.className("invalid-feedback");
     private static final By LOGIN_IMAGE = By.cssSelector("img[alt='Login']");
     private static final By LOGIN_HEADING = By.cssSelector(".login-card h1");
+    private static final By SIGNUP_LINK = By.cssSelector(".login-card a[href='/register']");
 
     private static final String LOGIN_PATH = "/login";
     private static final String PANEL_PATH = "/panel";
+    private static final String REGISTER_PATH = "/register";
 
     public void open() {
         String loginUrl = ConfigReader.get("base.url") + LOGIN_PATH;
@@ -67,5 +69,13 @@ public class LoginPage {
 
     public boolean isLoginButtonEnabled() {
         return WaitHelper.waitForVisibility(LOGIN_BUTTON).isEnabled();
+    }
+
+    public void clickSignUpLink() {
+        WaitHelper.waitForVisibility(SIGNUP_LINK).click();
+    }
+
+    public boolean isOnRegisterPage() {
+        return WaitHelper.waitForUrlContains(REGISTER_PATH);
     }
 }
