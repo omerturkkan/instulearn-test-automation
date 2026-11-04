@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     private static final Logger LOG = LoggerFactory.getLogger(LoginPage.class);
 
@@ -33,7 +33,7 @@ public class LoginPage {
         LOG.info("Logging in with email: {}", email);
         WaitHelper.waitForVisibility(EMAIL_INPUT).sendKeys(email);
         WaitHelper.waitForVisibility(PASSWORD_INPUT).sendKeys(password);
-        WaitHelper.waitForVisibility(LOGIN_BUTTON).click();
+        click(LOGIN_BUTTON);
     }
 
     public boolean isLoggedIn() {
@@ -72,7 +72,7 @@ public class LoginPage {
     }
 
     public void clickSignUpLink() {
-        WaitHelper.waitForVisibility(SIGNUP_LINK).click();
+        click(SIGNUP_LINK);
     }
 
     public boolean isOnRegisterPage() {
