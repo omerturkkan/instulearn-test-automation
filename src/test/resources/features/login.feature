@@ -39,3 +39,9 @@ Feature: User login
     Given the user is on the login page
     When the user clicks the forgot password link
     Then the forgot password page should open in a new tab
+
+  @ui
+  Scenario: User navigates from the home page to the login page
+    Given the user is on the home page
+    When the user clicks the login link in the top bar
+    Then the user should be on the login page

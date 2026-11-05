@@ -110,4 +110,11 @@ public class LoginSteps {
                 .as("The forgot password page should open in a new tab")
                 .isTrue();
     }
+
+    @Then("the user should be on the login page")
+    public void theUserShouldBeOnTheLoginPage() {
+        assertThat(loginPage.isLoginPageOpened())
+                .as("The user should be on the login page")
+                .isTrue();
+    }
 }

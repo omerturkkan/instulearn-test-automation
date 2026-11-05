@@ -49,6 +49,10 @@ public class LoginPage extends BasePage {
         return currentUrl != null && currentUrl.contains(LOGIN_PATH);
     }
 
+    public boolean isLoginPageOpened() {
+        return WaitHelper.waitForUrlContains(LOGIN_PATH);
+    }
+
     public String getErrorMessage() {
         return WaitHelper.waitForVisibility(ERROR_MESSAGE).getText();
     }
