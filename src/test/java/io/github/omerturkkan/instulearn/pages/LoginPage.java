@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     private static final Logger LOG = LoggerFactory.getLogger(LoginPage.class);
 
@@ -15,9 +15,15 @@ public class LoginPage {
     private static final By PASSWORD_INPUT = By.id("password");
     private static final By LOGIN_BUTTON = By.cssSelector("form[action='/login'] button[type='submit']");
     private static final By ERROR_MESSAGE = By.className("invalid-feedback");
+    private static final By LOGIN_IMAGE = By.cssSelector("img[alt='Login']");
+    private static final By LOGIN_HEADING = By.cssSelector(".login-card h1");
+    private static final By SIGNUP_LINK = By.cssSelector(".login-card a[href='/register']");
+    private static final By FORGOT_PASSWORD_LINK = By.cssSelector(".login-card a[href='/forget-password']");
 
     private static final String LOGIN_PATH = "/login";
     private static final String PANEL_PATH = "/panel";
+    private static final String REGISTER_PATH = "/register";
+    private static final String FORGOT_PASSWORD_PATH = "/forget-password";
 
     public void open() {
         String loginUrl = ConfigReader.get("base.url") + LOGIN_PATH;
@@ -29,7 +35,7 @@ public class LoginPage {
         LOG.info("Logging in with email: {}", email);
         WaitHelper.waitForVisibility(EMAIL_INPUT).sendKeys(email);
         WaitHelper.waitForVisibility(PASSWORD_INPUT).sendKeys(password);
-        WaitHelper.waitForVisibility(LOGIN_BUTTON).click();
+        click(LOGIN_BUTTON);
     }
 
     public boolean isLoggedIn() {
@@ -43,7 +49,48 @@ public class LoginPage {
         return currentUrl != null && currentUrl.contains(LOGIN_PATH);
     }
 
+    public boolean isLoginPageOpened() {
+        return WaitHelper.waitForUrlContains(LOGIN_PATH);
+    }
+
     public String getErrorMessage() {
         return WaitHelper.waitForVisibility(ERROR_MESSAGE).getText();
+    }
+
+    public boolean isLoginImageDisplayed() {
+        return WaitHelper.waitForVisibility(LOGIN_IMAGE).isDisplayed();
+    }
+
+    public String getHeadingText() {
+        return WaitHelper.waitForVisibility(LOGIN_HEADING).getText();
+    }
+
+    public boolean isEmailFieldEnabled() {
+        return WaitHelper.waitForVisibility(EMAIL_INPUT).isEnabled();
+    }
+
+    public boolean isPasswordFieldEnabled() {
+        return WaitHelper.waitForVisibility(PASSWORD_INPUT).isEnabled();
+    }
+
+    public boolean isLoginButtonEnabled() {
+        return WaitHelper.waitForVisibility(LOGIN_BUTTON).isEnabled();
+    }
+
+    public void clickSignUpLink() {
+        click(SIGNUP_LINK);
+    }
+
+    public boolean isOnRegisterPage() {
+        return WaitHelper.waitForUrlContains(REGISTER_PATH);
+    }
+
+    public void clickForgotPasswordLink() {
+        click(FORGOT_PASSWORD_LINK);
+    }
+
+    public boolean isForgotPasswordPageOpenedInNewTab() {
+        switchToNewTab();
+        return WaitHelper.waitForUrlContains(FORGOT_PASSWORD_PATH);
     }
 }

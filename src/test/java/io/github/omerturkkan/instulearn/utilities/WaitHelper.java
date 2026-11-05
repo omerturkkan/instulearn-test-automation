@@ -25,6 +25,14 @@ public final class WaitHelper {
         }
     }
 
+    public static WebElement waitForClickable(By locator) {
+        return createWait().until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public static void waitForNumberOfWindows(int expectedCount) {
+        createWait().until(ExpectedConditions.numberOfWindowsToBe(expectedCount));
+    }
+
     private static WebDriverWait createWait() {
         long timeoutSeconds = Long.parseLong(ConfigReader.get("explicit.wait.seconds"));
         return new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(timeoutSeconds));
