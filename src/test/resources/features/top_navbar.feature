@@ -10,3 +10,16 @@ Feature: Top navbar easy links
       | Instructors |
       | Store       |
       | Blog        |
+
+  @ui
+  Scenario Outline: Visitor is redirected to the relevant page from the top navbar
+    Given the user is on the home page
+    When the user clicks the "<link>" link on the top navbar
+    Then the page URL should contain "<path>"
+
+    Examples:
+      | link        | path         |
+      | Courses     | /classes     |
+      | Instructors | /instructors |
+      | Store       | /products    |
+      | Blog        | /blog        |
