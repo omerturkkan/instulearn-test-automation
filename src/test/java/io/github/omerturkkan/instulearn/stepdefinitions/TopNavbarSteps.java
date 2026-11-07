@@ -1,6 +1,7 @@
 package io.github.omerturkkan.instulearn.stepdefinitions;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.github.omerturkkan.instulearn.pages.TopNavbar;
 
 import java.util.List;
@@ -16,5 +17,10 @@ public class TopNavbarSteps {
         assertThat(topNavbar.getLinkTexts())
                 .as("Top navbar links")
                 .containsExactlyElementsOf(expectedLinks);
+    }
+
+    @When("the user clicks the {string} link on the top navbar")
+    public void theUserClicksTheLinkOnTheTopNavbar(String linkText) {
+        topNavbar.clickLink(linkText);
     }
 }
