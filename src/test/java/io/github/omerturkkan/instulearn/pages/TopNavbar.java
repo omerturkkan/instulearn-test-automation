@@ -7,9 +7,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class TopNavbar {
+public class TopNavbar extends BasePage {
 
     private static final By NAVBAR_LINKS = By.cssSelector("#navbar .nav-link");
+    private static final By SITE_LOGO = By.cssSelector(".navbar-brand");
 
     public List<String> getLinkTexts() {
         return WaitHelper.waitForAllVisible(NAVBAR_LINKS).stream()
@@ -24,5 +25,9 @@ public class TopNavbar {
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("Top navbar link not found: " + linkText))
                 .click();
+    }
+
+    public void clickSiteLogo() {
+        click(SITE_LOGO);
     }
 }

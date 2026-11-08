@@ -2,6 +2,7 @@ package io.github.omerturkkan.instulearn.pages;
 
 import io.github.omerturkkan.instulearn.utilities.ConfigReader;
 import io.github.omerturkkan.instulearn.utilities.DriverManager;
+import io.github.omerturkkan.instulearn.utilities.WaitHelper;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,5 +21,9 @@ public class HomePage extends BasePage {
 
     public void clickTopBarLoginLink() {
         click(TOP_BAR_LOGIN_LINK);
+    }
+
+    public boolean isOnHomePage() {
+        return WaitHelper.waitForUrlToBe(ConfigReader.get("base.url") + "/");
     }
 }

@@ -30,6 +30,14 @@ public final class WaitHelper {
         }
     }
 
+    public static boolean waitForUrlToBe(String expectedUrl) {
+        try {
+            return createWait().until(ExpectedConditions.urlToBe(expectedUrl));
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
     public static WebElement waitForClickable(By locator) {
         return createWait().until(ExpectedConditions.elementToBeClickable(locator));
     }
