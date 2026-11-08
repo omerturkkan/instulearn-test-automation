@@ -23,3 +23,10 @@ Feature: Top navbar easy links
       | Instructors | /instructors |
       | Store       | /products    |
       | Blog        | /blog        |
+
+  @ui
+  Scenario: Site logo leads to the home page
+    Given the user is on the home page
+    And the user clicks the "Courses" link on the top navbar
+    When the user clicks the site logo
+    Then the user should be on the home page

@@ -23,4 +23,9 @@ public class TopNavbarSteps {
     public void theUserClicksTheLinkOnTheTopNavbar(String linkText) {
         topNavbar.clickLink(linkText);
     }
+
+    @When("the user clicks the site logo")
+    public void theUserClicksTheSiteLogo() {
+        topNavbar.clickSiteLogo();
+    }
 }
