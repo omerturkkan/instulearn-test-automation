@@ -12,7 +12,7 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 | API testing | REST Assured | Planned |
 | Assertions | AssertJ | In use |
 | Reporting | Allure | In use |
-| Logging | SLF4J, Log4j2 | Planned |
+| Logging | SLF4J, Log4j2 | In use |
 | CI/CD | Jenkins | Planned |
 
 ## Prerequisites
