@@ -11,6 +11,8 @@ public class TopNavbar extends BasePage {
 
     private static final By NAVBAR_LINKS = By.cssSelector("#navbar .nav-link");
     private static final By SITE_LOGO = By.cssSelector(".navbar-brand");
+    private static final By CART_BUTTON = By.id("navbarShopingCart");
+    private static final By NOTIFICATIONS_BUTTON = By.id("navbarNotification");
 
     public List<String> getLinkTexts() {
         return WaitHelper.waitForAllVisible(NAVBAR_LINKS).stream()
@@ -29,5 +31,13 @@ public class TopNavbar extends BasePage {
 
     public void clickSiteLogo() {
         click(SITE_LOGO);
+    }
+
+    public boolean isCartButtonVisible() {
+        return isDisplayed(CART_BUTTON);
+    }
+
+    public boolean isNotificationsButtonEnabled() {
+        return isEnabled(NOTIFICATIONS_BUTTON);
     }
 }

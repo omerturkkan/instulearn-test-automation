@@ -30,3 +30,11 @@ Feature: Top navbar easy links
     And the user clicks the "Courses" link on the top navbar
     When the user clicks the site logo
     Then the user should be on the home page
+
+  @ui
+  Scenario: Logged-in user sees the cart and notifications buttons
+    Given the user is on the login page
+    And the user logs in with valid "student" credentials
+    And the user is on the home page
+    Then the cart button should be visible
+    And the notifications button should be visible and enabled
