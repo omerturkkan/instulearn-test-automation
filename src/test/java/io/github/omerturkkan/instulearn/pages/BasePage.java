@@ -3,6 +3,7 @@ package io.github.omerturkkan.instulearn.pages;
 import io.github.omerturkkan.instulearn.utilities.DriverManager;
 import io.github.omerturkkan.instulearn.utilities.WaitHelper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
@@ -11,6 +12,18 @@ public abstract class BasePage {
 
     protected void click(By locator) {
         WaitHelper.waitForClickable(locator).click();
+    }
+
+    protected boolean isEnabled(By locator) {
+        return WaitHelper.waitForVisibility(locator).isEnabled();
+    }
+
+    protected boolean isDisplayed(By locator) {
+        try {
+            return WaitHelper.waitForVisibility(locator).isDisplayed();
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     protected void switchToNewTab() {

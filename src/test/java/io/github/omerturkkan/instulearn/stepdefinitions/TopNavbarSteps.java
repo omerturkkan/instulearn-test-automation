@@ -28,4 +28,18 @@ public class TopNavbarSteps {
     public void theUserClicksTheSiteLogo() {
         topNavbar.clickSiteLogo();
     }
+
+    @Then("the cart button should be visible")
+    public void theCartButtonShouldBeVisible() {
+        assertThat(topNavbar.isCartButtonVisible())
+                .as("Cart button should be visible")
+                .isTrue();
+    }
+
+    @Then("the notifications button should be visible and enabled")
+    public void theNotificationsButtonShouldBeVisibleAndEnabled() {
+        assertThat(topNavbar.isNotificationsButtonEnabled())
+                .as("Notifications button should be visible and enabled")
+                .isTrue();
+    }
 }
