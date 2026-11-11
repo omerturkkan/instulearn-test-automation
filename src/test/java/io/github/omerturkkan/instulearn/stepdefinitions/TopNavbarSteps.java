@@ -42,4 +42,9 @@ public class TopNavbarSteps {
                 .as("Notifications button should be visible and enabled")
                 .isTrue();
     }
+
+    @When("the user searches for {string} on the top navbar")
+    public void theUserSearchesForOnTheTopNavbar(String keyword) {
+        topNavbar.searchFor(keyword);
+    }
 }

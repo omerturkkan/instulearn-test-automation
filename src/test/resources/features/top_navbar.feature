@@ -38,3 +38,9 @@ Feature: Top navbar easy links
     And the user is on the home page
     Then the cart button should be visible
     And the notifications button should be visible and enabled
+
+  @ui
+  Scenario: Visitor searches from the top navbar
+    Given the user is on the home page
+    When the user searches for "java" on the top navbar
+    Then the page URL should contain "/search?search=java"
