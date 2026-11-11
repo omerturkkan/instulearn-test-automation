@@ -13,6 +13,8 @@ public class TopNavbar extends BasePage {
     private static final By SITE_LOGO = By.cssSelector(".navbar-brand");
     private static final By CART_BUTTON = By.id("navbarShopingCart");
     private static final By NOTIFICATIONS_BUTTON = By.id("navbarNotification");
+    private static final By SEARCH_INPUT = By.cssSelector(".navbar-search input[name='search']");
+    private static final By SEARCH_BUTTON = By.cssSelector(".navbar-search button[type='submit']");
 
     public List<String> getLinkTexts() {
         return WaitHelper.waitForAllVisible(NAVBAR_LINKS).stream()
@@ -39,5 +41,10 @@ public class TopNavbar extends BasePage {
 
     public boolean isNotificationsButtonEnabled() {
         return isEnabled(NOTIFICATIONS_BUTTON);
+    }
+
+    public void searchFor(String keyword) {
+        type(SEARCH_INPUT, keyword);
+        click(SEARCH_BUTTON);
     }
 }

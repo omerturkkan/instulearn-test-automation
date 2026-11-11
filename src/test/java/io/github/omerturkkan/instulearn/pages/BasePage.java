@@ -5,6 +5,7 @@ import io.github.omerturkkan.instulearn.utilities.WaitHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public abstract class BasePage {
 
@@ -12,6 +13,12 @@ public abstract class BasePage {
 
     protected void click(By locator) {
         WaitHelper.waitForClickable(locator).click();
+    }
+
+    protected void type(By locator, String text) {
+        WebElement element = WaitHelper.waitForVisibility(locator);
+        element.clear();
+        element.sendKeys(text);
     }
 
     protected boolean isEnabled(By locator) {
