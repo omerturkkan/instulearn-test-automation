@@ -15,6 +15,7 @@ public class TopNavbar extends BasePage {
     private static final By NOTIFICATIONS_BUTTON = By.id("navbarNotification");
     private static final By SEARCH_INPUT = By.cssSelector(".navbar-search input[name='search']");
     private static final By SEARCH_BUTTON = By.cssSelector(".navbar-search button[type='submit']");
+    private static final By START_LEARNING_BUTTON = By.cssSelector(".nav-start-a-live-btn.btn");
 
     public List<String> getLinkTexts() {
         return WaitHelper.waitForAllVisible(NAVBAR_LINKS).stream()
@@ -46,5 +47,9 @@ public class TopNavbar extends BasePage {
     public void searchFor(String keyword) {
         type(SEARCH_INPUT, keyword);
         click(SEARCH_BUTTON);
+    }
+
+    public void clickStartLearningButton() {
+        click(START_LEARNING_BUTTON);
     }
 }

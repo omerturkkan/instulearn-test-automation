@@ -47,4 +47,9 @@ public class TopNavbarSteps {
     public void theUserSearchesForOnTheTopNavbar(String keyword) {
         topNavbar.searchFor(keyword);
     }
+
+    @When("the user clicks the Start learning button on the top navbar")
+    public void theUserClicksTheStartLearningButtonOnTheTopNavbar() {
+        topNavbar.clickStartLearningButton();
+    }
 }
