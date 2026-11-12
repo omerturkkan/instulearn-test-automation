@@ -45,7 +45,7 @@ Feature: Top navbar easy links
     When the user searches for "java" on the top navbar
     Then the page URL should contain "/search?search=java"
 
-  @ui @wip
+  @ui
   Scenario: Visitor is redirected to the login page from Start learning
     Given the user is on the home page
     When the user clicks the Start learning button on the top navbar
