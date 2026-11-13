@@ -16,6 +16,8 @@ public class TopNavbar extends BasePage {
     private static final By SEARCH_INPUT = By.cssSelector(".navbar-search input[name='search']");
     private static final By SEARCH_BUTTON = By.cssSelector(".navbar-search button[type='submit']");
     private static final By START_LEARNING_BUTTON = By.cssSelector(".nav-start-a-live-btn.btn");
+    private static final By LOGIN_LINK = By.cssSelector(".top-navbar a[href='/login']");
+    private static final By REGISTER_LINK = By.cssSelector(".top-navbar a[href='/register']");
 
     public List<String> getLinkTexts() {
         return WaitHelper.waitForAllVisible(NAVBAR_LINKS).stream()
@@ -51,5 +53,13 @@ public class TopNavbar extends BasePage {
 
     public void clickStartLearningButton() {
         click(START_LEARNING_BUTTON);
+    }
+
+    public void clickLoginLink() {
+        click(LOGIN_LINK);
+    }
+
+    public void clickRegisterLink() {
+        click(REGISTER_LINK);
     }
 }
