@@ -50,3 +50,9 @@ Feature: Top navbar easy links
     Given the user is on the home page
     When the user clicks the Start learning button on the top navbar
     Then the user should be on the login page
+
+  @ui
+  Scenario: Visitor is redirected to the register page from the top bar
+    Given the user is on the home page
+    When the user clicks the register link in the top bar
+    Then the user should be on the register page

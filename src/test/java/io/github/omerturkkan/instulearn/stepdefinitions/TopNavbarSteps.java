@@ -57,4 +57,9 @@ public class TopNavbarSteps {
     public void theUserClicksTheLoginLinkInTheTopBar() {
         topNavbar.clickLoginLink();
     }
+
+    @When("the user clicks the register link in the top bar")
+    public void theUserClicksTheRegisterLinkInTheTopBar() {
+        topNavbar.clickRegisterLink();
+    }
 }
