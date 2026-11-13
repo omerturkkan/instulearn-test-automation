@@ -52,4 +52,9 @@ public class TopNavbarSteps {
     public void theUserClicksTheStartLearningButtonOnTheTopNavbar() {
         topNavbar.clickStartLearningButton();
     }
+
+    @When("the user clicks the login link in the top bar")
+    public void theUserClicksTheLoginLinkInTheTopBar() {
+        topNavbar.clickLoginLink();
+    }
 }
