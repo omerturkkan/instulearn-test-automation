@@ -18,6 +18,8 @@ public class TopNavbar extends BasePage {
     private static final By START_LEARNING_BUTTON = By.cssSelector(".nav-start-a-live-btn.btn");
     private static final By LOGIN_LINK = By.cssSelector(".top-navbar a[href='/login']");
     private static final By REGISTER_LINK = By.cssSelector(".top-navbar a[href='/register']");
+    private static final By CATEGORIES_MENU = By.cssSelector(".xs-categories-toggle");
+    private static final By CATEGORY_LINKS = By.cssSelector(".cat-dropdown-menu > li > a");
 
     public List<String> getLinkTexts() {
         return WaitHelper.waitForAllVisible(NAVBAR_LINKS).stream()
@@ -61,5 +63,14 @@ public class TopNavbar extends BasePage {
 
     public void clickRegisterLink() {
         click(REGISTER_LINK);
+    }
+
+    public void selectCategory(String categoryName) {
+        click(CATEGORIES_MENU);
+        WaitHelper.waitForAllVisible(CATEGORY_LINKS).stream()
+                .filter(category -> category.getText().trim().equals(categoryName))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Category not found: " + categoryName))
+                .click();
     }
 }
