@@ -56,3 +56,9 @@ Feature: Top navbar easy links
     Given the user is on the home page
     When the user clicks the register link in the top bar
     Then the user should be on the register page
+
+  @ui
+  Scenario: Visitor opens a category from the Categories menu
+    Given the user is on the home page
+    When the user selects the "Development" category from the top navbar
+    Then the page URL should contain "/categories/Development"

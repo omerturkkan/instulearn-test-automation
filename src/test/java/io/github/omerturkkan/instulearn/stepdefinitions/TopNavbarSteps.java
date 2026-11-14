@@ -62,4 +62,9 @@ public class TopNavbarSteps {
     public void theUserClicksTheRegisterLinkInTheTopBar() {
         topNavbar.clickRegisterLink();
     }
+
+    @When("the user selects the {string} category from the top navbar")
+    public void theUserSelectsTheCategoryFromTheTopNavbar(String categoryName) {
+        topNavbar.selectCategory(categoryName);
+    }
 }
