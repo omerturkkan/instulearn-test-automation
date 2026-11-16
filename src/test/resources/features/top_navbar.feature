@@ -62,3 +62,13 @@ Feature: Top navbar easy links
     Given the user is on the home page
     When the user selects the "Development" category from the top navbar
     Then the page URL should contain "/categories/Development"
+
+  @ui
+  Scenario: Visitor sees the filters on the courses page
+    Given the user is on the home page
+    When the user clicks the "Courses" link on the top navbar
+    Then the following filters should be displayed on the courses page:
+      | Upcoming |
+      | Free     |
+      | Discount |
+      | Download |
