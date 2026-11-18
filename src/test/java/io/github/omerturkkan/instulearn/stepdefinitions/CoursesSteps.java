@@ -1,6 +1,7 @@
 package io.github.omerturkkan.instulearn.stepdefinitions;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.github.omerturkkan.instulearn.pages.CoursesPage;
 
 import java.util.List;
@@ -16,5 +17,10 @@ public class CoursesSteps {
         assertThat(coursesPage.getFilterNames())
                 .as("Courses page filters")
                 .containsExactlyElementsOf(expectedFilters);
+    }
+
+    @When("the user turns on the {string} filter")
+    public void theUserTurnsOnTheFilter(String filterName) {
+        coursesPage.turnOnFilter(filterName);
     }
 }
