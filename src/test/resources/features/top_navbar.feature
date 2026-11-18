@@ -72,3 +72,17 @@ Feature: Top navbar easy links
       | Free     |
       | Discount |
       | Download |
+
+  @ui @wip
+  Scenario Outline: Visitor filters the courses
+    Given the user is on the home page
+    When the user clicks the "Courses" link on the top navbar
+    And the user turns on the "<filter>" filter
+    Then the page URL should contain "<parameter>"
+
+    Examples:
+      | filter   | parameter       |
+      | Upcoming | upcoming=on     |
+      | Free     | free=on         |
+      | Discount | discount=on     |
+      | Download | downloadable=on |
