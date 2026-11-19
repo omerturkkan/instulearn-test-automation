@@ -33,8 +33,8 @@ public class LoginPage extends BasePage {
 
     public void login(String email, String password) {
         LOG.info("Logging in with email: {}", email);
-        WaitHelper.waitForVisibility(EMAIL_INPUT).sendKeys(email);
-        WaitHelper.waitForVisibility(PASSWORD_INPUT).sendKeys(password);
+        type(EMAIL_INPUT, email);
+        type(PASSWORD_INPUT, password);
         click(LOGIN_BUTTON);
     }
 
