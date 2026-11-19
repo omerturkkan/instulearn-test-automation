@@ -6,16 +6,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class BasePage {
 
     private static final int EXPECTED_WINDOW_COUNT = 2;
 
+    protected final Logger log = LoggerFactory.getLogger(getClass());
+
     protected void click(By locator) {
+        log.info("Clicking: {}", locator);
         WaitHelper.waitForClickable(locator).click();
     }
 
     protected void type(By locator, String text) {
+        log.info("Typing into: {}", locator);
         WebElement element = WaitHelper.waitForVisibility(locator);
         element.clear();
         element.sendKeys(text);
