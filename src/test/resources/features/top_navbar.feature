@@ -73,7 +73,7 @@ Feature: Top navbar easy links
       | Discount |
       | Download |
 
-  @ui @wip
+  @ui
   Scenario Outline: Visitor filters the courses
     Given the user is on the home page
     When the user clicks the "Courses" link on the top navbar
