@@ -13,14 +13,17 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 | Assertions | AssertJ | In use |
 | Reporting | Allure | In use |
 | Logging | SLF4J, Log4j2 | In use |
-| CI/CD | Jenkins | Planned |
+| CI/CD | Jenkins (Pipeline as Code) | In use |
+| Containers | Docker Compose, Selenium Grid | In use |
 
 ## Prerequisites
 
 - JDK 21
-- Maven 3.9+
 - Git
-- Google Chrome
+- Google Chrome (for local runs)
+- Docker Desktop (for Selenium Grid and Jenkins)
+
+Maven does not need to be installed. The project includes the Maven Wrapper (`mvnw`), which downloads the right Maven version on the first run.
 
 ## How to Run
 
@@ -28,16 +31,47 @@ A BDD test automation framework for [InstuLearn](https://qa.instulearn.com/), a 
 2. Run the tests:
 
    ```
-   mvn test
+   ./mvnw test
    ```
 
-To run without opening a browser window: `mvn test -Dheadless=true`
+   On Windows (PowerShell or cmd), use `mvnw.cmd test`.
+
+To run without opening a browser window: `./mvnw test -Dheadless=true`
 
 To view the Allure report after a run:
 
 ```
-mvn io.qameta.allure:allure-maven:serve
+./mvnw io.qameta.allure:allure-maven:serve
 ```
+
+### Run on Selenium Grid (Docker)
+
+Start the containers defined in `docker-compose.yml`:
+
+```
+docker compose up -d
+```
+
+| Service | URL | Purpose |
+|---|---|---|
+| Jenkins | http://localhost:8080 | CI server |
+| Selenium Grid | http://localhost:4444 | Remote Chrome |
+| Live browser view | http://localhost:7900 (password: `secret`) | Watch the test run |
+
+Run the tests against the Grid instead of the local Chrome:
+
+```
+./mvnw test -Dremote=true
+```
+
+### Run in Jenkins
+
+The pipeline is defined in the `Jenkinsfile`. It runs all tests on the Selenium Grid container.
+
+1. Open Jenkins at http://localhost:8080 and finish the setup wizard.
+2. Add two credentials of type **Username with password**: `instulearn-student` and `instulearn-teacher`. The pipeline passes them to the tests as environment variables, so no secrets are stored in the repository.
+3. Create a **Pipeline** job with **Pipeline script from SCM**, pointing to this repository.
+4. Click **Build Now**.
 
 ## Status
 
@@ -46,9 +80,10 @@ Work in progress. Planned milestones:
 - [x] Maven project setup
 - [x] Configuration handling and WebDriver management
 - [x] First page object and login scenario
-- [ ] Hooks: screenshots on failure, logging, Allure attachments
+- [x] Hooks: screenshots on failure, logging, Allure attachments
 - [ ] User stories implemented as test scenarios
+- [x] Jenkins pipeline running the tests on Selenium Grid (Docker)
+- [ ] Allure report publishing in Jenkins
 - [ ] API tests with REST Assured
 - [ ] Parallel and cross-browser execution
-- [ ] Jenkins pipeline with Allure report publishing
 - [ ] Scheduled nightly regression
