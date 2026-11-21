@@ -3,6 +3,10 @@ package io.github.omerturkkan.instulearn.utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URI;
 
 public final class DriverManager {
 
@@ -51,6 +55,18 @@ public final class DriverManager {
 
         options.addArguments(WINDOW_SIZE_ARGUMENT);
 
+        if (Boolean.parseBoolean(ConfigReader.get("remote"))) {
+            return createRemoteDriver(options);
+        }
         return new ChromeDriver(options);
+    }
+
+    private static WebDriver createRemoteDriver(ChromeOptions options) {
+        String gridUrl = ConfigReader.get("grid.url");
+        try {
+            return new RemoteWebDriver(URI.create(gridUrl).toURL(), options);
+        } catch (MalformedURLException e) {
+            throw new IllegalStateException("Invalid grid.url: " + gridUrl, e);
+        }
     }
 }
