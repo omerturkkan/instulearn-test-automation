@@ -4,7 +4,16 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh './mvnw -B test -Dremote=true -Dgrid.url=http://selenium-chrome:4444 "-Dcucumber.filter.name=Visitor sees the easy links on the top navbar"'
+                withCredentials([
+                    usernamePassword(credentialsId: 'instulearn-student',
+                                     usernameVariable: 'STUDENT_EMAIL',
+                                     passwordVariable: 'STUDENT_PASSWORD'),
+                    usernamePassword(credentialsId: 'instulearn-teacher',
+                                     usernameVariable: 'TEACHER_EMAIL',
+                                     passwordVariable: 'TEACHER_PASSWORD')
+                ]) {
+                    sh './mvnw -B test -Dremote=true -Dgrid.url=http://selenium-chrome:4444'
+                }
             }
         }
     }
