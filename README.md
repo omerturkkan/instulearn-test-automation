@@ -73,6 +73,12 @@ The pipeline is defined in the `Jenkinsfile`. It runs all tests on the Selenium 
 3. Create a **Pipeline** job with **Pipeline script from SCM**, pointing to this repository.
 4. Click **Build Now**.
 
+To start a build automatically on every push, the pipeline uses a GitHub webhook (`githubPush()` trigger). Because Jenkins runs on `localhost`, GitHub reaches it through an [ngrok](https://ngrok.com/) tunnel:
+
+1. Start the tunnel: `ngrok http 8080`
+2. In the GitHub repository, go to **Settings → Webhooks** and add `https://<your-ngrok-domain>/github-webhook/` with content type `application/json` and the **push** event.
+3. Run one build manually so that Jenkins registers the trigger. After that, every push starts a build.
+
 ## Status
 
 Work in progress. Planned milestones:
