@@ -7,5 +7,14 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
 
+  selenium-chrome:
+    image: selenium/standalone-chrome:4.52.0-20261101
+    container_name: selenium-chrome
+    shm_size: 2gb
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+
 volumes:
   jenkins_home:
+
