@@ -4,6 +4,7 @@ import io.github.omerturkkan.instulearn.utilities.ConfigReader;
 import io.github.omerturkkan.instulearn.utilities.DriverManager;
 import io.github.omerturkkan.instulearn.utilities.WaitHelper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 
 public class LoginPage extends BasePage {
 
@@ -81,7 +82,12 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isForgotPasswordPageOpenedInNewTab() {
-        switchToNewTab();
+        try {
+            switchToNewTab();
+        } catch (TimeoutException e) {
+            log.warn("No new tab opened for the forgot password page");
+            return false;
+        }
         return WaitHelper.waitForUrlContains(FORGOT_PASSWORD_PATH);
     }
 }
