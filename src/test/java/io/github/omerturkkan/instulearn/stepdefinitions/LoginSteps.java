@@ -50,7 +50,7 @@ public class LoginSteps {
 
     @And("the user should stay on the login page")
     public void theUserShouldStayOnTheLoginPage() {
-        assertThat(loginPage.isOnLoginPage())
+        assertThat(loginPage.isLoginPageOpened())
                 .as("User should stay on the login page after an invalid login")
                 .isTrue();
     }

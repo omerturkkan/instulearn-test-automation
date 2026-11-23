@@ -40,11 +40,6 @@ public class LoginPage extends BasePage {
         return loggedIn;
     }
 
-    public boolean isOnLoginPage() {
-        String currentUrl = DriverManager.getDriver().getCurrentUrl();
-        return currentUrl != null && currentUrl.contains(LOGIN_PATH);
-    }
-
     public boolean isLoginPageOpened() {
         return WaitHelper.waitForUrlContains(LOGIN_PATH);
     }
