@@ -17,3 +17,4 @@ logs/
 
 # Secrets and local config
 .env
+.claude/settings.local.json
